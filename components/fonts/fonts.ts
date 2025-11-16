@@ -1,9 +1,9 @@
-import { Aubrey, Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
-export const aubrey = Aubrey({
+export const inter = Inter({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-aubrey",
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 

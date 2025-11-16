@@ -1,24 +1,14 @@
-import Link from "next/link";
+import NavLinks from "./navLinks";
+import NavHeading from "./navHeading";
+import NavItems from "./navItems";
 
 export default function Nav() {
   return (
-    <nav>
-      <div className="container">
-        <Link href="#">AniMax</Link>
-        <ul>
-          <li>
-            <Link href="/explore">Explore</Link>
-          </li>
-          <li>
-            <Link href="#">News</Link>
-          </li>
-          <li>
-            <Link href="#">Categories</Link>
-          </li>
-          <li>
-            <input type="text" />
-          </li>
-        </ul>
+    <nav className="w-screen p-2 flex items-center justify-center border-b-2 z-50 bg-white md:p-3">
+      <div className="container flex items-center justify-between ">
+        <NavHeading />
+        <NavItems />
+        <NavLinks />
       </div>
     </nav>
   );

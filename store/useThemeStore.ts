@@ -1,5 +1,7 @@
+"use client";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { useEffect } from "react";
 
 type ThemeState = {
   theme: "light" | "dark";
@@ -22,3 +24,21 @@ export const useThemeStore = create(
     }
   )
 );
+
+export default function useThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const theme = useThemeStore((state) => state.theme);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
+  return children;
+}
