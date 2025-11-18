@@ -4,6 +4,7 @@ import { inter, poppins } from "@/components/fonts/fonts";
 import "./globals.css";
 import Nav from "@/components/nav/nav";
 import ThemeProvider from "@/store/useThemeStore";
+import QueryProvider from "@/components/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,10 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${poppins.variable} antialiased`}>
         <main>
-          <ThemeProvider>
-            <Nav />
-          </ThemeProvider>
-          {children}
+          <QueryProvider>
+            <ThemeProvider>
+              <Nav />
+            </ThemeProvider>
+            {children}
+          </QueryProvider>
         </main>
       </body>
     </html>

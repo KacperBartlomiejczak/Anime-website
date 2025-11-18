@@ -1,14 +1,19 @@
 "use client";
 
-import Link from "next/link";
-
 import { useNavStore } from "@/store/useNavStore";
 
 import NavLink from "./navLink";
-import Nav from "./nav";
+import { useEffect } from "react";
 
 export default function NavLinks() {
   const isOpen = useNavStore((state) => state.isOpen);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   return (
     <ul
@@ -18,7 +23,7 @@ export default function NavLinks() {
     >
       <NavLink title="explore" href="/explore" />
       <NavLink title="anime" href="/anime" />
-      <NavLink title="our blog" href="/blog" />
+      <NavLink title="Anime news" href="/news" />
       <NavLink title="saved" href="/saved" />
     </ul>
   );
