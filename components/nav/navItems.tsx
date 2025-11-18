@@ -4,24 +4,27 @@ import { Search, User, Sun, Moon } from "lucide-react";
 import NavHamburger from "./navHamburger";
 import { useThemeStore } from "@/store/useThemeStore";
 import { motion, AnimatePresence } from "framer-motion";
+import NavItemsList from "./navItemList";
 
 export default function NavItems() {
   const { theme, toggleTheme } = useThemeStore();
 
+  const classes = `text-black hover:text-purple-900 transition-colors dark:text-white dark:hover:text-purple-500`;
+
   return (
     <ul className="flex items-center justify-center gap-2 z-10 relative">
-      <li>
+      <NavItemsList>
         <button className="cursor-pointer">
-          <Search className="text-black hover:text-purple-900 transition-colors" />
+          <Search className={classes} />
         </button>
-      </li>
-      <li>
+      </NavItemsList>
+      <NavItemsList>
         <Link href="/profile">
-          <User className="text-black hover:text-purple-900 transition-colors" />
+          <User className={classes} />
         </Link>
-      </li>
-      <li>
-        <button onClick={toggleTheme} className="relative">
+      </NavItemsList>
+      <NavItemsList>
+        <button onClick={toggleTheme} className="relative cursor-pointer">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={theme}
@@ -31,17 +34,17 @@ export default function NavItems() {
               transition={{ duration: 0.3 }}
             >
               {theme === "dark" ? (
-                <Sun className="text-black" />
+                <Sun className={classes} />
               ) : (
-                <Moon className="text-black" />
+                <Moon className={classes} />
               )}
             </motion.div>
           </AnimatePresence>
         </button>
-      </li>
-      <li>
+      </NavItemsList>
+      <NavItemsList>
         <NavHamburger />
-      </li>
+      </NavItemsList>
     </ul>
   );
 }
